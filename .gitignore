@@ -1,0 +1,90 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Maven
+/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/wrapper/maven-wrapper.jar
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+*.log
+logs/
+*.txt
+
+*.class
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+# Environment variables
+.env
+.env.*
+*.env
+
+# Docker
+*.log
+*.tmp
+.dockerignore # Often contains similar entries, but good to include here too
+docker-compose.override.yml # If you use overrides for local dev that shouldn't be committed
+
+# Spring Boot specific
+/src/main/resources/application*.yml.bak
+/src/main/resources/application*.properties.bak
+/src/main/resources/application-local.properties # Or any local-only config
+/src/main/resources/application-dev.properties # If you have specific dev configs not to be committed
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+# IDE-specific (general)
+*.swp
+*.bak
+*.orig
+*.obj
+*.o
+*.rej
+*~
+.#*
+.#*#
+
+# AWS specific (if you generate credentials locally)
+.aws/credentials
