@@ -1,0 +1,43 @@
+version: '3.8' # Specify the Docker Compose file format version
+
+services:
+  # PostgreSQL Database Service
+  db:
+    image: postgres:13-alpine # Use a lightweight PostgreSQL image
+    container_name: cadenza-db # Assign a friendly name to the container
+    environment: # Set environment variables for PostgreSQL setup
+      POSTGRES_DB: cadenza_db # Database name
+      POSTGRES_USER: hectorrios # Database username
+      POSTGRES_PASSWORD: chepa0168 # Database password
+    ports:
+      - "5432:5432" # Map container port 5432 to host port 5432
+        # This allows you to connect to the database from your host machine
+      # (e.g., with IntelliJ's Database tools or a SQL client)
+    volumes:
+      - db_data:/var/lib/postgresql/data # Persist database data
+      # This ensures your data isn't lost if the container is removed
+
+  # Spring Boot Backend Service
+  backend:
+    build: ./ # Instruct Docker Compose to build the image from the Dockerfile
+    # located in the 'mock-spotify-backend' directory
+    container_name: cadenza-backend # Assign a friendly name to the container
+    ports:
+      - "8080:8080" # Map container port 8080 to host port 8080
+      # This allows you to access your Spring Boot API from your host machine (e.g., Postman)
+    environment: # Set environment variables for the Spring Boot application
+      # Crucial: Within the Docker network, the database host is referred to by its service name 'db'
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/cadenza_db
+      SPRING_DATASOURCE_USERNAME: hectorrios
+      SPRING_DATASOURCE_PASSWORD: chepa0168
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update # Allow Hibernate to update schema (good for development)
+      # You can also pass your JWT secret here for Dockerized environment
+      # jwt.secret: yourSuperSecretKeyThatIsAtLeast256BitsLongAndRandomlyGeneratedForProductionUse
+      # jwt.expiration.ms: 3600000
+    depends_on:
+      - db # Ensure the 'db' service starts before the 'backend' service
+        # This helps prevent connection errors when the backend tries to start
+      # before the database is ready.
+
+volumes:
+  db_data: # Define the named volume for database persistence

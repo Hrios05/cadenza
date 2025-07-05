@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CadenzaBackendApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(CadenzaBackendApplication.class, args);
     }
 

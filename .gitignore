@@ -1,81 +1,11 @@
-HELP.md
-target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-
-# Maven
-/target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/wrapper/maven-wrapper.jar
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
+# Generic ignores for all projects
 .DS_Store
-.AppleDouble
-.LSOverride
-
+Thumbs.db
+ehthumbs.db
+Desktop.ini
 *.log
 logs/
 *.txt
-
-*.class
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-# Environment variables
-.env
-.env.*
-*.env
-
-# Docker
-*.log
-*.tmp
-.dockerignore # Often contains similar entries, but good to include here too
-docker-compose.override.yml # If you use overrides for local dev that shouldn't be committed
-
-# Spring Boot specific
-/src/main/resources/application*.yml.bak
-/src/main/resources/application*.properties.bak
-/src/main/resources/application-local.properties # Or any local-only config
-/src/main/resources/application-dev.properties # If you have specific dev configs not to be committed
-
-# Package Files
-*.jar
-*.war
-*.ear
-*.zip
-*.tar.gz
-*.rar
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
-.vscode/
-
-# IDE-specific (general)
 *.swp
 *.bak
 *.orig
@@ -86,5 +16,79 @@ build/
 .#*
 .#*#
 
+# Maven
+# Ignore the entire target directory where compiled code and packages are built
+/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+# Ignore the Maven Wrapper JAR as it's typically downloaded
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle (Include if you might ever use Gradle or have mixed projects)
+# Ignore the entire build directory for Gradle projects
+/build/
+.gradle/
+
+# Compiled class files and packaged artifacts
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# IntelliJ IDEA specific files
+.idea/
+*.iml
+*.iws
+*.ipr
+out/ # IntelliJ's default output directory
+
+# Eclipse / STS specific files
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+# NetBeans specific files
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# VS Code specific files
+.vscode/
+
+# Environment variables and sensitive local configurations
+.env
+.env.*
+*.env
 # AWS specific (if you generate credentials locally)
 .aws/credentials
+
+# Docker related files (for the backend project itself)
+# Note: docker-compose.yml is usually in the parent, but if you had
+# a Dockerfile specific to *this* module, its logs/tmp files are ignored.
+*.log
+*.tmp
+.dockerignore # Often contains similar entries, but good to include here too
+
+# Spring Boot specific local configuration files
+# These are often used for local development and should not be committed
+/src/main/resources/application-local.properties
+/src/main/resources/application-dev.properties
+/src/main/resources/application*.yml.bak
+/src/main/resources/application*.properties.bak
+
+# Optional: If you have a HELP.md that is generated or purely local, ignore it
+# HELP.md
